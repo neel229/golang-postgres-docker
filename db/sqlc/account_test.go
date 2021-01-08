@@ -4,14 +4,15 @@ import (
 	"context"
 	"testing"
 
+	"github.com/neel229/golang-postgres-docker/util"
 	"github.com/stretchr/testify/require"
 )
 
 func TestCreateAccount(t *testing.T) {
 	arg := CreateAccountParams{
-		Owner:    "Neel",
-		Balance:  100,
-		Currency: "Sterling-Pound",
+		Owner:    util.RandomOwner(),
+		Balance:  util.RandomMoney(),
+		Currency: util.RandomCurrency(),
 	}
 
 	account, err := testQueries.CreateAccount(context.Background(), arg)
